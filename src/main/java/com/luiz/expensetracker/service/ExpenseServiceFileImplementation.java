@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ExpenseTrackerService {
+public class ExpenseServiceFileImplementation implements ExpenseTrackerService{
     // Gets all expenses
     public List<Expense> getAllExpenses(){
         return ExpenseDataHandler.getExpenses();
