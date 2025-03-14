@@ -5,18 +5,22 @@ import com.luiz.expensetracker.exceptions.ExpenseNotFoundException;
 import com.luiz.expensetracker.exceptions.NoCategoriesFoundException;
 import com.luiz.expensetracker.model.Expense;
 import com.luiz.expensetracker.utils.ExpenseDataHandler;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Profile("json")
 public class ExpenseServiceFileImplementation implements ExpenseTrackerService{
     // Gets all expenses
+    @Override
     public List<Expense> getAllExpenses(){
         return ExpenseDataHandler.getExpenses();
     }
 
     // Gets all categories
+    @Override
     public List<String> getAllExpenseCategories(){
         List<String> categories = ExpenseDataHandler.getExpenses().stream()
                 .map(Expense::getCategory)
@@ -27,13 +31,14 @@ public class ExpenseServiceFileImplementation implements ExpenseTrackerService{
         }
         return categories;
     }
+    @Override
     // Get expenses by day
     public List<Expense> getExpenseByDay(String date){
         return ExpenseDataHandler.getExpenses().stream()
                 .filter(expense -> expense.getDate().equalsIgnoreCase(date))
                 .toList();
     }
-
+    @Override
     public List<Expense> getExpenseByCategoryAndMonth(String category, String month){
         // filter the expenses list by month and category
         return ExpenseDataHandler.getExpenses().stream()
@@ -44,7 +49,7 @@ public class ExpenseServiceFileImplementation implements ExpenseTrackerService{
                         )
                 .toList();
     }
-
+    @Override
     public Expense getExpenseById(Long id){
         // Filter the expenses List to get the object with the corresponding id
         Expense filteredExpense = ExpenseDataHandler.getExpenses().stream()
@@ -56,7 +61,7 @@ public class ExpenseServiceFileImplementation implements ExpenseTrackerService{
         }
         return filteredExpense;
     }
-
+    @Override
     public Expense addExpense(Expense expense){
         // Gets the list of expenses
         List<Expense> expenseList = ExpenseDataHandler.getExpenses();
@@ -70,7 +75,7 @@ public class ExpenseServiceFileImplementation implements ExpenseTrackerService{
         ExpenseDataHandler.saveExpensesToFile();
         return expense;
     }
-
+    @Override
     public void updateExpense(Long id, Expense expense){
         // Checks if the id from the Expense object is the same from the Long id
         if (!expense.getId().equals(id)){
@@ -89,7 +94,7 @@ public class ExpenseServiceFileImplementation implements ExpenseTrackerService{
         expenseList.set(expenseIndex, expense);
         ExpenseDataHandler.saveExpensesToFile();
     }
-
+    @Override
     public void deleteExpense(Long id){
         // Get expense by id
         Expense expense = getExpenseById(id);

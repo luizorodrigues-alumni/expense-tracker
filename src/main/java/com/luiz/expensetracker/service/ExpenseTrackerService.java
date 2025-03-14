@@ -1,9 +1,10 @@
 package com.luiz.expensetracker.service;
 
 import com.luiz.expensetracker.model.Expense;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface ExpenseTrackerService {
     public List<String> getAllExpenseCategories();
     public List<Expense> getAllExpenses();
