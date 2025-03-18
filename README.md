@@ -13,8 +13,10 @@ The API follows **RESTful principles** and uses the **MVC pattern** for structur
 ## ♨️ Technologies Used
 - **Java**
 - **Spring Boot**
+- **Spring Data**
 - **Spring MVC**
 - **Lombok**
+- **Swagger**
 
 ## 🌐 API Endpoints
 
@@ -105,4 +107,23 @@ The API follows **RESTful principles** and uses the **MVC pattern** for structur
    ./gradlew bootRun
    ```
 4. Access the API via Postman or your preferred client.
+
+## 📖 API Documentation with Swagger  
+This project uses **Swagger UI** to provide interactive API documentation. Swagger helps visualize and test API endpoints directly in the browser.  
+
+### 🛠️ How to Access Swagger UI  
+1. **Start the application** following the **How to Run the Project** section.  
+2. **Open Swagger UI** in your browser:
+   ```sh
+   http://localhost:8080/swagger-ui.html
+    ```
+3. You will see a list of all available API endpoints with descriptions and sample requests.  
+
+### 📝 Testing API via Swagger  
+- Click on an endpoint to expand its details.  
+- Fill in the required parameters (if any).  
+- Click **"Try it out"** and then **"Execute"** to send a request.  
+- See the response from the server in real time.  
+
+
 
