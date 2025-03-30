@@ -1,20 +1,22 @@
 # 📟 Expense Tracker API
 
 ## 🚀 Overview
-This project is a simple **REST API** for managing personal expenses using **Spring Boot**. The API allows users to:
+This project is a **REST API** for managing personal expenses using **Spring Boot**. The API allows users to:
 - **Create** new expenses.
 - **Update** existing expense details.
 - **Delete** expenses from the tracker.
 - **View** the list of all recorded expenses.
 - **Filter** expenses by date, category, and month.
 
-The API follows **RESTful principles** and uses the **MVC pattern** for structuring the application.
+The API follows **RESTful principles**, uses the **MVC pattern** for structuring the application and **Spring Security** for authentication.
 
 ## ♨️ Technologies Used
 - **Java**
 - **Spring Boot**
 - **Spring Data**
 - **Spring MVC**
+- **Spring Security**
+- **JWT Authentication**
 - **Lombok**
 - **Swagger**
 
@@ -93,6 +95,17 @@ The API follows **RESTful principles** and uses the **MVC pattern** for structur
 - **Controller**: `ExpenseController` handles HTTP requests.
 - **Service**: `ExpenseTrackerService` contains business logic to manage expenses.
 
+## 🔐 Authentication & Security
+This API is secured using **Spring Security**. Only authenticated users can create, update, or delete expenses.  
+
+### 🔑 Authentication Flow:
+1. **User Logs In:**  
+   - Send a `POST` request to `/auth/login` with valid credentials.  
+2. **Receive a JWT Token:**  
+   - If authentication is successful, a **JWT token** is returned.  
+3. **Use the Token in Requests:**  
+   - Include the token in the `Authorization` header as `Bearer <token>` when making API requests.  
+
 ## 🏃🏻‍♀️ How to Run the Project
 1. Clone the repository:
    ```sh
@@ -107,6 +120,7 @@ The API follows **RESTful principles** and uses the **MVC pattern** for structur
    ./gradlew bootRun
    ```
 4. Access the API via Postman or your preferred client.
+
 
 ## 📖 API Documentation with Swagger  
 This project uses **Swagger UI** to provide interactive API documentation. Swagger helps visualize and test API endpoints directly in the browser.  
