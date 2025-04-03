@@ -40,6 +40,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll() // Allow access to swagger ui
                         .requestMatchers("/h2-console/**").permitAll() // Allow access to h2 db console
                         .requestMatchers(HttpMethod.POST, "/expenses").hasRole("ADMIN")
                         .anyRequest().authenticated()
